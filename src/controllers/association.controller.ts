@@ -34,7 +34,7 @@ export class AssociationController {
     constructor(private associationUseCases: AssociationUseCases) { }
 
     @UseGuards(JwtAuthGuard, RolesGuard)
-    @Roles(Role.Admin)
+    @Roles(Role.SuperAdmin)
     @ApiBearerAuth()
     @Get(":id")
     @ApiParam({ name: "id", type: String, description: "ID of the association" })
@@ -44,7 +44,7 @@ export class AssociationController {
 
 
     @UseGuards(JwtAuthGuard, RolesGuard)
-    @Roles(Role.Admin)
+    @Roles(Role.SuperAdmin)
     @ApiBearerAuth()
     @Get("email/:email")
     @ApiParam({ name: "email", type: String, description: "email of the association" })
@@ -56,7 +56,7 @@ export class AssociationController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Get()
     @ApiBearerAuth()
-    @Roles(Role.Admin)
+    @Roles(Role.SuperAdmin)
     async getAll() {
         return this.associationUseCases.getAllAssociation();
     }
@@ -73,7 +73,7 @@ export class AssociationController {
 
 
     @UseGuards(JwtAuthGuard, RolesGuard)
-    @Roles(Role.Admin)
+    @Roles(Role.SuperAdmin)
     @ApiBearerAuth()
     @Delete(":id")
     async deleteAssociation(@Param("id") id: string): Promise<boolean> {

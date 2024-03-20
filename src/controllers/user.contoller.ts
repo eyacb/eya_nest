@@ -10,11 +10,7 @@ import {
   UseInterceptors,
   UploadedFile,
 } from "@nestjs/common";
-import {
-  CreateUserDto,
-  UpdateUserDto,
-  UpdateUserPasswordDto,
-} from "../../core/dtos";
+
 import { UserUseCases } from "src/use-cases/user/user.use-case";
 import {
   ApiBody,
@@ -29,14 +25,17 @@ import { Roles } from "src/core/roles/role.decorator";
 import { JwtAuthGuard } from "src/core/guards/jwtauth.guard";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { imageAndPdfFilter, storage } from "src/configuration/multer.config";
+import { CreateUserDto, UpdateUserDto, UpdateUserPasswordDto } from "src/core/dtos/user.dto";
+import { AssociationUseCases } from "src/use-cases/association/association.use-case";
+import { MailerService } from "src/frameworks/mailer/mailer-services.service";
 
 @ApiTags("api/user")
 @Controller("api/user")
 export class UserController {
-  constructor(private userUseCases: UserUseCases) {}
+  constructor(private userUseCases: UserUseCases,private mailerService: MailerService) {}
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.Admin)
+  @Roles(Role.Admin,Role.ResponsableAcademie,Role.ResponsableComp,Role.ResponsableEvent,Role.ResponsableHandResult)
   @ApiBearerAuth()
   @Get(":id")
   @ApiParam({ name: "id", type: String, description: "ID of the user" })
@@ -45,7 +44,7 @@ export class UserController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.Admin)
+  @Roles(Role.Admin,Role.ResponsableAcademie,Role.ResponsableComp,Role.ResponsableEvent,Role.ResponsableHandResult,Role.Entraineur)
   @ApiBearerAuth()
   @Get("email/:email")
   @ApiParam({ name: "email", type: String, description: "email of the user" })
@@ -56,7 +55,7 @@ export class UserController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
   @ApiBearerAuth()
-  @Roles(Role.Admin)
+  @Roles(Role.Admin,Role.ResponsableAcademie)
   async getAll() {
     return this.userUseCases.getAllUsers();
   }
@@ -138,7 +137,7 @@ export class UserController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.Admin)
+  @Roles(Role.Admin,Role.ResponsableAcademie)
   @ApiBearerAuth()
   @Delete(":id")
   async deleteUser(@Param("id") id: string): Promise<boolean> {
@@ -146,10 +145,35 @@ export class UserController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.Admin)
+  @Roles(Role.Admin,Role.ResponsableAcademie)
   @ApiBearerAuth()
-  @Get("users/count")
+  @Get("users/count") 
   async usersStats(): Promise<number> {
     return this.userUseCases.usersStats();
   }
+
+  /*@UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin,Role.SuperAdmin,Role.ResponsableAcademie)
+  @ApiBearerAuth()
+  @Post("assign-role/:userId/:role")
+  @ApiParam({ name: "userId", type: String, description: "ID de l'utilisateur" })
+  @ApiParam({ name: "role", type: String, description: "Rôle à assigner" })
+  async assignRole(
+    @Param("userId") userId: string,
+    @Param("role") role: Role
+  ) {
+    try {
+      // Appeler la méthode pour attribuer le rôle dans user cases
+      await this.userUseCases.assignRole(userId, role);
+      return { success: true, message: `Rôle ${role} attribué avec succès à l'utilisateur ${userId}` };
+    } catch (error) {
+      return { success: false, error: "Impossible d'attribuer le rôle à l'utilisateur" };
+    }
+  }
+  
+  @Post("invite")
+  async inviteUser(@Body() inviteUserDto: InviteUserDto): Promise<void> {
+    await this.mailerService.sendEmail(inviteUserDto);
+  }*/
 }
+

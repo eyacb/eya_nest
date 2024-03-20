@@ -1,3 +1,4 @@
+
 export abstract class IGenericRepository<T> {
   abstract getAll(): Promise<T[]>;
 
@@ -14,4 +15,6 @@ export abstract class IGenericRepository<T> {
   abstract delete(id: string): Promise<T>;
 
   abstract countByCriteria(criteria: any): Promise<number>;
+  
+
 }

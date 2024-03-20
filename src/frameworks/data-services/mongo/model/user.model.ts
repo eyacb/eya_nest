@@ -18,7 +18,7 @@ export class User {
   password: string;
 
   @Prop({ enum: Object.values(Role), default: Role.User })
-  role: string;
+  role: Role;
 
   @Prop()
   birthDate: string;

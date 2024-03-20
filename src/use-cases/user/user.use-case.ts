@@ -17,12 +17,14 @@ import { Role } from "src/core/roles/role.enum";
 import { BASE_URL } from "src/configuration";
 import { Types } from "mongoose";
 
+
 @Injectable()
 export class UserUseCases implements OnModuleInit {
   constructor(
     private dataServices: IDataServices,
     private userFactoryService: UserFactoryService,
-    private bcryptService: IBcryptService
+    private bcryptService: IBcryptService,
+
   ) {}
   async onModuleInit(): Promise<void> {
     setTimeout(async () => {
@@ -161,4 +163,16 @@ export class UserUseCases implements OnModuleInit {
   async usersStats(): Promise<number> {
     return await this.dataServices.users.countByCriteria({ role: Role.User });
   }
+
+ /* async assignRole(id: string, role: Role): Promise<void> {
+
+    await this.dataServices.users.updateUserRole(id, role);
+  }
+
+  async inviteUser(inviteUserDto: InviteUserDto): Promise<void> {
+    // Implémentez la logique d'invitation de l'utilisateur ici
+    // Par exemple, envoyer un e-mail d'invitation
+    console.log("Invitation envoyée à", inviteUserDto.email);
+  }*/
+
 }

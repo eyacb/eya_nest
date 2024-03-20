@@ -1,9 +1,11 @@
+import { Role } from "src/core/roles/role.enum";
+
 export class User {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
-  role: string;
+  role: Role;
   birthDate: string;
   avatar: string;
   gender: string;
@@ -13,4 +15,7 @@ export class User {
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date;
+   
 }
+
+export { Role };

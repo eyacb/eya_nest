@@ -1,3 +1,4 @@
-export * from "./users/user.contoller";
+export * from "./user.contoller";
 export * from "./login.controller";
+export * from "./competition.controller";
 

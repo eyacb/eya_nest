@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { UserController, LoginController } from "./controllers";
+import { UserController, LoginController, CompetitionController } from "./controllers";
 import { DataServicesModule } from "./services/data-services/data-services.module";
 import { UserUseCasesModule } from "./use-cases/user/user-use-cases.module";
 import { BcryptServicesModule } from "./services";
@@ -14,8 +14,9 @@ import { join } from "path";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { AssociationController } from "./controllers/association.controller";
 import { AssociationUseCasesModule } from "./use-cases/association/association-use-cases.module";
-import { AdultMemberUseCasesModule } from "./use-cases/user/adult-member/adult-member-use-cases.module";
-import { AdultMemberController } from "./controllers/users/adult-member.controller";
+import { CompetitionUseCasesModule } from "./use-cases/competition/competition-use-cases.module";
+import { MailerService } from "./frameworks/mailer/mailer-services.service";
+
 
 @Module({
   imports: [
@@ -31,13 +32,21 @@ import { AdultMemberController } from "./controllers/users/adult-member.controll
     UserUseCasesModule,
     BcryptServicesModule,
     LoginUseCasesModule,
-    AdultMemberUseCasesModule,
     NotificationsUseCasesModule,
     AssociationUseCasesModule,
     SocketModule,
-    
+    CompetitionUseCasesModule,
+
+
   ],
-  providers: [JwtStrategy],
-  controllers: [UserController, LoginController, NotificationsController, AssociationController,AdultMemberController],
+  providers: [JwtStrategy,
+    MailerService,],
+  controllers: [
+    UserController,
+    LoginController,
+    NotificationsController,
+    AssociationController,
+    CompetitionController,
+  ],
 })
-export class AppModule {}
+export class AppModule { }
