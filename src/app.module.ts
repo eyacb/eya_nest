@@ -17,6 +17,7 @@ import { AssociationUseCasesModule } from "./use-cases/association/association-u
 import { CompetitionUseCasesModule } from "./use-cases/competition/competition-use-cases.module";
 import { MailerService } from "./frameworks/mailer/mailer-services.service";
 import { SceanceUseCasesModule } from "./use-cases/sceance/seance-use-cases.module";
+import { GroupUseCasesModule } from "./use-cases/group/group-use-cases.module";
 
 
 @Module({
@@ -38,7 +39,7 @@ import { SceanceUseCasesModule } from "./use-cases/sceance/seance-use-cases.modu
     SocketModule,
     CompetitionUseCasesModule,
     SceanceUseCasesModule,
-
+    GroupUseCasesModule,
 
   ],
   providers: [JwtStrategy,
@@ -50,6 +51,7 @@ import { SceanceUseCasesModule } from "./use-cases/sceance/seance-use-cases.modu
     AssociationController,
     CompetitionController,
     SceanceController,
+  
   ],
 })
 export class AppModule { }

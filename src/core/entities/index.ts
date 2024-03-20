@@ -5,3 +5,4 @@ export * from "./association.entity";
 export * from "./competition.entity";
 export * from "./evenement.entity";
 export * from "./sceance.entity";
+export * from "./group.entity";

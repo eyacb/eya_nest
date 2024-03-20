@@ -1,7 +1,7 @@
 import { Injectable, OnApplicationBootstrap } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { Association, Competition, Evenement, IDataServices, IGenericRepository } from "../../../core"; 
+import { Association, Competition, Evenement, Group, IDataServices, IGenericRepository } from "../../../core"; 
 import { MongoGenericRepository } from "./mongo-generic-repository";
 import {
   UserDocument,
@@ -21,6 +21,7 @@ export class MongoDataServices
   competitions: IGenericRepository<Competition>;
   evenements: IGenericRepository<Evenement>; 
   sceances: IGenericRepository<Sceance>; 
+  groups: IGenericRepository<Group>; 
   constructor(
     @InjectModel(User.name)
     private UserRepository: Model<UserDocument>,
