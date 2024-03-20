@@ -17,8 +17,12 @@ export class AssociationUseCases {
         return this.dataServices.associations.getAll();
     }
 
-    getAssociationById(id: any): Promise<Association> {
-        return this.dataServices.associations.get(id);
+    async getAssociationById(id: any): Promise<Association> {
+        const association=await  this.dataServices.associations.get(id);
+        if (!association) {
+            throw new NotFoundException(`association with ID ${id} not found.`);
+          }
+          return association;
     }
 
     async createAssociation(createAssociationDto: CreateAssociationDto): Promise<Association> {

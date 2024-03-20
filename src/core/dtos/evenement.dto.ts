@@ -1,7 +1,7 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class CreateEventDto {
+export class CreateEvenementDto {
 
     @ApiProperty()
     @IsString()
@@ -26,7 +26,7 @@ export class CreateEventDto {
 
 }
 
-export class UpdateEventDto {
+export class UpdateEvenementDto {
 
     @ApiPropertyOptional()
     @IsString()
@@ -47,7 +47,7 @@ export class UpdateEventDto {
    
 }
 
-export class DeleteEventDto{
+export class DeleteEvenementDto{
     id: string;
 
 }

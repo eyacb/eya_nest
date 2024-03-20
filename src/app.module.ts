@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { UserController, LoginController, CompetitionController } from "./controllers";
+import { UserController, LoginController, CompetitionController, SceanceController } from "./controllers";
 import { DataServicesModule } from "./services/data-services/data-services.module";
 import { UserUseCasesModule } from "./use-cases/user/user-use-cases.module";
 import { BcryptServicesModule } from "./services";
@@ -16,6 +16,7 @@ import { AssociationController } from "./controllers/association.controller";
 import { AssociationUseCasesModule } from "./use-cases/association/association-use-cases.module";
 import { CompetitionUseCasesModule } from "./use-cases/competition/competition-use-cases.module";
 import { MailerService } from "./frameworks/mailer/mailer-services.service";
+import { SceanceUseCasesModule } from "./use-cases/sceance/seance-use-cases.module";
 
 
 @Module({
@@ -36,6 +37,7 @@ import { MailerService } from "./frameworks/mailer/mailer-services.service";
     AssociationUseCasesModule,
     SocketModule,
     CompetitionUseCasesModule,
+    SceanceUseCasesModule,
 
 
   ],
@@ -47,6 +49,7 @@ import { MailerService } from "./frameworks/mailer/mailer-services.service";
     NotificationsController,
     AssociationController,
     CompetitionController,
+    SceanceController,
   ],
 })
 export class AppModule { }

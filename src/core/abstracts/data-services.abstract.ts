@@ -1,4 +1,5 @@
-import { User, Notification, Association, Competition ,Event} from "../entities";
+import { User, Notification, Association, Competition, Evenement} from "../entities";
+import { Sceance } from "../entities/sceance.entity";
 import { IGenericRepository } from "./generic-repository.abstract";
 
 export abstract class IDataServices {
@@ -6,5 +7,6 @@ export abstract class IDataServices {
   abstract notifications: IGenericRepository<Notification>;
   abstract associations: IGenericRepository<Association>;
   abstract competitions: IGenericRepository<Competition>;
-  abstract events: IGenericRepository<Event>;
+  abstract evenements: IGenericRepository<Evenement>;
+  abstract sceances: IGenericRepository<Sceance>;
 }

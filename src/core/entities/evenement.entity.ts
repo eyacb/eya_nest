@@ -1,6 +1,4 @@
-import { User } from "./user.entity";
-
-export class Event{
+export class Evenement{
     titre: string;
     description: String;
     dateDebut: Date;

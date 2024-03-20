@@ -2,19 +2,19 @@ import { Module } from '@nestjs/common';
 import { SocketModule } from "src/frameworks/socket/socket-services.module";
 import { BcryptServicesModule } from "src/services/bcrypt-services/bcrypt-services.module";
 import { DataServicesModule } from "../../services/data-services/data-services.module";
-import { EventUseCases } from './event.use-case';
-import { EventFactoryService } from './event-factory.service';
+import { SceanceFactoryService } from './sceance-factory.service';
+import { SceanceUseCases } from './sceance.use-case';
 
 
 @Module({
   imports: [DataServicesModule,SocketModule,BcryptServicesModule,],
   providers:  [
-    EventFactoryService,
-    EventUseCases,
+    SceanceFactoryService,
+    SceanceUseCases,
 ],
   exports: [
-   EventFactoryService,
-    EventUseCases,
+    SceanceFactoryService,
+    SceanceUseCases,
 ],
 })
-export class EventUseCasesModule {}
+export class SceanceUseCasesModule {}
