@@ -11,4 +11,4 @@ import { ChatFactoryService } from './chat-factory.service';
   providers: [ChatFactoryService, ChatsUseCases],
   exports: [ChatFactoryService],
 })
-export class ChatModule {}
+export class ChatUseCaseModule {}

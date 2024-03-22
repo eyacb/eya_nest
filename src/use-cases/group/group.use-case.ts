@@ -1,7 +1,8 @@
-import { Group, IBcryptService, IDataServices } from 'src/core';
+import { IBcryptService, IDataServices } from 'src/core';
 import { CreateGroupDto, UpdateGroupDto } from 'src/core/dtos/group.dto'; 
 import { GroupFactoryService } from './group-factory.service'; 
 import { Body, Injectable, NotFoundException, Param, UnauthorizedException } from '@nestjs/common';
+import { Group } from 'src/core/entities/group.entity';
 
 @Injectable()
 export class GroupUseCases {

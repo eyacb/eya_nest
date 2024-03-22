@@ -1,6 +1,6 @@
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Chat } from 'src/core/entities';
+import { Chat } from 'src/core/entities/chat.entity';
 
 export class ChatsUseCases {
   constructor(

@@ -1,7 +1,7 @@
 import { Injectable, OnApplicationBootstrap } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { Association, Competition, Evenement, IDataServices, IGenericRepository } from "../../../core"; 
+import { Association, Competition, Evenement, IDataServices, IGenericRepository, Sceance } from "../../../core"; 
 import { MongoGenericRepository } from "./mongo-generic-repository";
 import {
   UserDocument,
@@ -10,7 +10,8 @@ import {
   NotificationDocument,
 
 } from "./model";
-import { Sceance } from "src/core/entities/sceance.entity";
+import { Group } from "src/core/entities/group.entity";
+
 
 @Injectable()
 export class MongoDataServices
@@ -28,6 +29,7 @@ export class MongoDataServices
     @InjectModel(Notification.name)
     private NotificationRepository: Model<NotificationDocument>,
   ) {}
+  groups: IGenericRepository<Group>;
 
  
 

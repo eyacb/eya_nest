@@ -3,8 +3,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { MessagesUseCases } from './message.use-case';
 import { MessageController } from 'src/controllers';
 import { MessageFactoryService } from './message-factory.service';
-import { Message } from 'src/core/entities';
 import { MessageSchema } from 'src/frameworks/data-services/mongo/model';
+import { Message } from 'src/core/entities/message.entity';
 
 @Module({
   imports: [
@@ -14,4 +14,4 @@ import { MessageSchema } from 'src/frameworks/data-services/mongo/model';
   providers: [MessageFactoryService, MessagesUseCases],
   exports: [MessagesUseCases],
 })
-export class MessageModule {}
+export class MessageUseCaseModule {}
