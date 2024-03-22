@@ -17,8 +17,10 @@ import { AssociationUseCasesModule } from "./use-cases/association/association-u
 import { CompetitionUseCasesModule } from "./use-cases/competition/competition-use-cases.module";
 import { MailerService } from "./frameworks/mailer/mailer-services.service";
 import { SceanceUseCasesModule } from "./use-cases/sceance/seance-use-cases.module";
-import { ChatModule } from "./use-cases/chat/chat-use-cases.module";
-import { MessageModule } from "./use-cases/message/message-use-cases.module";
+import { GroupUseCasesModule } from "./use-cases/group/group-use-cases.module";
+import { ChatsUseCases } from "./use-cases/chat/chat.use-case";
+import { ChatUseCaseModule } from "./use-cases/chat/chat-use-cases.module";
+import { MessageUseCaseModule } from "./use-cases/message/message-use-cases.module";
 
 
 @Module({
@@ -40,10 +42,9 @@ import { MessageModule } from "./use-cases/message/message-use-cases.module";
     SocketModule,
     CompetitionUseCasesModule,
     SceanceUseCasesModule,
-    ChatModule,
-    MessageModule,
-
-
+    ChatUseCaseModule,
+    MessageUseCaseModule ,
+    GroupUseCasesModule
   ],
   providers: [JwtStrategy,
     MailerService,],
@@ -56,6 +57,7 @@ import { MessageModule } from "./use-cases/message/message-use-cases.module";
     SceanceController,
     ChatController,
     MessageController,
+  
   ],
 })
 export class AppModule { }

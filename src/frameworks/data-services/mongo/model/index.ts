@@ -6,3 +6,5 @@ export * from "./event.model";
 export * from "./sceance.model";
 export * from "./chat.model";
 export * from "./message.model";
+export * from "./group.model";
+ 

@@ -1,81 +1,63 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
 
-
-export class CreateSceanceDto {
-   
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    titre: string;
+export class CreateGroupDto {
 
     @ApiProperty()
     @IsString()
     @IsNotEmpty()
-    entraineur:String;
+    entraineur: string;
 
     @ApiProperty()
     @IsString()
     @IsNotEmpty()
-    description: String;
+    joueurs: string;
 
     @ApiProperty()
     @IsString()
     @IsNotEmpty()
-    DateEntrainement:Date;
+    niveau: String;
 
     @ApiProperty()
     @IsString()
     @IsNotEmpty()
-    heure:String;
+    nom: string;
 
     @ApiProperty()
     @IsString()
     @IsNotEmpty()
-    presence:String[];
+    age:number[];
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    type:String;
-   
-  
-}
-
-export class UpdateSceanceDto {
-
-    @ApiPropertyOptional()
-    @IsString()
-    titre?: string;
-
-    @ApiPropertyOptional()
-    @IsString()
-    entraineur?:String;
-
-    @ApiPropertyOptional()
-    @IsString()
-    description?: String;
-
-    @ApiPropertyOptional()
-    @IsString()
-    DateEntrainement?:Date;
-
-    @ApiPropertyOptional()
-    @IsString()
-    heure?:String;
-
-    @ApiPropertyOptional()
-    @IsString()
-    presence?:String[];
-
-    @ApiPropertyOptional()
-    @IsString()
-    type?:String;
 
 }
 
-export class DeleteSceanceDto{
+export class UpdateGroupDto {
+
+    @ApiPropertyOptional()
+    @IsString()
+    entraineur?: string;
+
+    @ApiPropertyOptional()
+    @IsString()
+    joueurs?: string;
+
+    @ApiPropertyOptional()
+    @IsString()
+    niveau?: String;
+
+    @ApiPropertyOptional()
+    @IsString()
+    nom?: String;
+
+    @ApiPropertyOptional()
+    @IsString()
+    age?:number[];
+
+
+   
+}
+
+export class DeleteGroupDto{
     id: string;
 
 }
-
