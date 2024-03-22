@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { UserController, LoginController, CompetitionController, SceanceController } from "./controllers";
+import { UserController, LoginController, CompetitionController, SceanceController, ChatController, MessageController } from "./controllers";
 import { DataServicesModule } from "./services/data-services/data-services.module";
 import { UserUseCasesModule } from "./use-cases/user/user-use-cases.module";
 import { BcryptServicesModule } from "./services";
@@ -17,6 +17,8 @@ import { AssociationUseCasesModule } from "./use-cases/association/association-u
 import { CompetitionUseCasesModule } from "./use-cases/competition/competition-use-cases.module";
 import { MailerService } from "./frameworks/mailer/mailer-services.service";
 import { SceanceUseCasesModule } from "./use-cases/sceance/seance-use-cases.module";
+import { ChatModule } from "./use-cases/chat/chat-use-cases.module";
+import { MessageModule } from "./use-cases/message/message-use-cases.module";
 
 
 @Module({
@@ -38,6 +40,8 @@ import { SceanceUseCasesModule } from "./use-cases/sceance/seance-use-cases.modu
     SocketModule,
     CompetitionUseCasesModule,
     SceanceUseCasesModule,
+    ChatModule,
+    MessageModule,
 
 
   ],
@@ -50,6 +54,8 @@ import { SceanceUseCasesModule } from "./use-cases/sceance/seance-use-cases.modu
     AssociationController,
     CompetitionController,
     SceanceController,
+    ChatController,
+    MessageController,
   ],
 })
 export class AppModule { }

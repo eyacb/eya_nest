@@ -13,6 +13,7 @@ import { FRONT_END_URL } from "src/configuration";
     methods: ["GET", "POST"],
   },
 })
+
 export class NotificationsGateway extends AbstractWebSocketGateway {
   private connectedClients: Map<string, { userId: string; role: string }> =
     new Map();

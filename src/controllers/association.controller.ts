@@ -21,8 +21,6 @@ import {
     ApiConsumes,
 } from "@nestjs/swagger";
 import { JwtAuthGuard } from "src/core/guards/jwtauth.guard";
-import { FileInterceptor } from "@nestjs/platform-express";
-import { imageAndPdfFilter, storage } from "src/configuration/multer.config";
 import { RolesGuard } from "src/core/roles/roles.guard";
 import { Role } from "src/core/roles/role.enum";
 import { Roles } from "src/core/roles/role.decorator";

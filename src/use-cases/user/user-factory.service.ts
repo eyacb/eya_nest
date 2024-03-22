@@ -5,30 +5,31 @@ import { CreateUserDto, UpdateUserDto } from "../../core/dtos";
 @Injectable()
 export class UserFactoryService {
   createNewUser(createUserDto: CreateUserDto) {
-    const newUser = new User();
-    newUser.firstName = createUserDto.firstName;
-    newUser.lastName = createUserDto.lastName;
-    newUser.email = createUserDto.email;
-    newUser.password = createUserDto.password;
-    newUser.role = createUserDto.role;
-    newUser.birthDate = createUserDto.birthDate;
-    newUser.gender = createUserDto.gender;
-    newUser.phoneNumber = createUserDto.phoneNumber;
-    newUser.avatar = createUserDto.avatar;
+    const newUser = new User({
+      firstName: createUserDto.firstName,
+      lastName: createUserDto.lastName,
+      email: createUserDto.email,
+      password: createUserDto.password,
+      role: createUserDto.role,
+      birthDate: createUserDto.birthDate,
+      gender: createUserDto.gender,
+      phoneNumber: createUserDto.phoneNumber,
+      avatar: createUserDto.avatar,
+    });
     return newUser;
   }
 
   updateUser(updateUserDto: UpdateUserDto) {
-    const updatedUser = new User();
-    updatedUser.firstName = updateUserDto.firstName;
-    updatedUser.lastName = updateUserDto.lastName;
-    updatedUser.birthDate = updateUserDto.birthDate;
-    updatedUser.gender = updateUserDto.gender;
-    updatedUser.role = updateUserDto.role;
-    updatedUser.phoneNumber = updateUserDto.phoneNumber;
-    updatedUser.avatar = updateUserDto.avatar;
-    updatedUser.updatedAt = new Date();
-
+    const updatedUser = new User({
+      firstName: updateUserDto.firstName,
+      lastName: updateUserDto.lastName,
+      birthDate: updateUserDto.birthDate,
+      gender: updateUserDto.gender,
+      role: updateUserDto.role,
+      phoneNumber: updateUserDto.phoneNumber,
+      avatar: updateUserDto.avatar,
+      updatedAt: new Date(),
+    });
     return updatedUser;
   }
 }
