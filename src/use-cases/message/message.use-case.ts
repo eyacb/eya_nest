@@ -1,6 +1,7 @@
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Message } from 'src/core/entities';
+import { Message } from 'src/core/entities/message.entity';
+
 
 export class MessagesUseCases {
   constructor(

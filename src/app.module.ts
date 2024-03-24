@@ -18,9 +18,9 @@ import { CompetitionUseCasesModule } from "./use-cases/competition/competition-u
 import { MailerService } from "./frameworks/mailer/mailer-services.service";
 import { SceanceUseCasesModule } from "./use-cases/sceance/seance-use-cases.module";
 import { GroupUseCasesModule } from "./use-cases/group/group-use-cases.module";
-import { ChatsUseCases } from "./use-cases/chat/chat.use-case";
 import { ChatUseCaseModule } from "./use-cases/chat/chat-use-cases.module";
 import { MessageUseCaseModule } from "./use-cases/message/message-use-cases.module";
+import { MessageFactoryService } from "./use-cases/message/message-factory.service";
 
 
 @Module({
@@ -44,10 +44,11 @@ import { MessageUseCaseModule } from "./use-cases/message/message-use-cases.modu
     SceanceUseCasesModule,
     ChatUseCaseModule,
     MessageUseCaseModule ,
-    GroupUseCasesModule
+    GroupUseCasesModule,
   ],
   providers: [JwtStrategy,
-    MailerService,],
+    MailerService,
+  MessageFactoryService],
   controllers: [
     UserController,
     LoginController,

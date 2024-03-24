@@ -1,7 +1,8 @@
 import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { Competition, IDataServices } from 'src/core';
 import { CreateCompetitionDto, UpdateCompetitionDto } from 'src/core/dtos/competition.dto'; 
-
+@ApiTags("api/competition")
 @Controller('competition')
 export class CompetitionController {
   constructor(  

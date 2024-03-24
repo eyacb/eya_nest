@@ -1,8 +1,9 @@
 import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { IDataServices } from 'src/core';
 import { CreateSceanceDto, UpdateSceanceDto } from 'src/core/dtos/sceance.dto'; 
 import { Sceance } from 'src/core/entities/sceance.entity';
-
+@ApiTags("api/sceance")
 @Controller('sceance')
 export class SceanceController {
   constructor(  
