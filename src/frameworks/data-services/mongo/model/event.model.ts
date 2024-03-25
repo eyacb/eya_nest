@@ -1,21 +1,19 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
-export type EventDocument=Event & Document;
+export type EventDocument = Event & Document;
 @Schema()
-export class Event  {
+export class Event {
+  @Prop()
+  titre: string;
 
-    @Prop()
-    titre: string;
+  //typo here !
+  @Prop()
+  description: string;
 
-    @Prop()
-    discription: string;
+  @Prop({ default: Date.now })
+  dateDebut: Date;
 
-    @Prop({ default: Date.now })
-    dateDebut: Date;
-
-    @Prop({ default: Date.now })
-    dateFin:Date;
-
-   
+  @Prop({ default: Date.now })
+  dateFin: Date;
 }
-export const EventSchema= SchemaFactory.createForClass(Event);
+export const EventSchema = SchemaFactory.createForClass(Event);

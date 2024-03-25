@@ -1,30 +1,27 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
-export type SceanceDocument=Sceance & Document;
+export type SceanceDocument = Sceance & Document;
 @Schema()
-export class Sceance  {
+export class Sceance {
+  @Prop()
+  titre: string;
 
-    @Prop()
-    titre: string;
+  @Prop()
+  entraineur: string;
 
-    @Prop()
-    entraineur:string;
+  @Prop()
+  description: string;
 
-    @Prop()
-    description:string;
+  @Prop({ default: Date.now })
+  DateEntrainement: Date;
 
-    @Prop({ default: Date.now })
-    DateEntrainement: Date;
+  @Prop()
+  heure: string;
+  //model and entity should have same types : i assumed its an array so change if not
+  @Prop()
+  presence: string[];
 
-    @Prop()
-    heure:string;
-
-    @Prop()
-    presence:string;
-
-    @Prop()
-    type:string;
-   
-    
+  @Prop()
+  type: string;
 }
-export const SceanceSchema= SchemaFactory.createForClass(Sceance);
+export const SceanceSchema = SchemaFactory.createForClass(Sceance);

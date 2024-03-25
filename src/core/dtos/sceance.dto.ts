@@ -1,81 +1,73 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
-
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
+import { IsNotEmpty, IsString } from "class-validator";
 
 export class CreateSceanceDto {
-   
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    titre: string;
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  titre: string;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    entraineur:String;
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  entraineur: string;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    description: String;
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  description: string;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    DateEntrainement:Date;
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  DateEntrainement: Date;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    heure:String;
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  heure: string;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    presence:String[];
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  presence: string[];
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    type:String;
-   
-  
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  type: string;
 }
 
 export class UpdateSceanceDto {
+  @ApiPropertyOptional()
+  @IsString()
+  titre?: string;
 
-    @ApiPropertyOptional()
-    @IsString()
-    titre?: string;
+  @ApiPropertyOptional()
+  @IsString()
+  entraineur?: string;
 
-    @ApiPropertyOptional()
-    @IsString()
-    entraineur?:String;
+  @ApiPropertyOptional()
+  @IsString()
+  description?: string;
 
-    @ApiPropertyOptional()
-    @IsString()
-    description?: String;
+  @ApiPropertyOptional()
+  @IsString()
+  DateEntrainement?: Date;
 
-    @ApiPropertyOptional()
-    @IsString()
-    DateEntrainement?:Date;
+  @ApiPropertyOptional()
+  @IsString()
+  heure?: string;
 
-    @ApiPropertyOptional()
-    @IsString()
-    heure?:String;
+  @ApiPropertyOptional()
+  @IsString()
+  presence?: string[];
 
-    @ApiPropertyOptional()
-    @IsString()
-    presence?:String[];
-
-    @ApiPropertyOptional()
-    @IsString()
-    type?:String;
-
+  @ApiPropertyOptional()
+  @IsString()
+  type?: string;
 }
 
-export class DeleteSceanceDto{
-    id: string;
-
+export class DeleteSceanceDto {
+  id: string;
 }
-

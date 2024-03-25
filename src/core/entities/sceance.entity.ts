@@ -1,9 +1,9 @@
-export class Sceance{
-    titre: string;
-    entraineur:String;
-    description: String;
-    DateEntrainement:Date;
-    heure:String;
-    presence:String[];
-    type:String;//(debutants/confirmés)
+export class Sceance {
+  titre: string;
+  entraineur: string;
+  description: string;
+  DateEntrainement: Date;
+  heure: string;
+  presence: string[];
+  type: string; //(debutants/confirmés)
 }

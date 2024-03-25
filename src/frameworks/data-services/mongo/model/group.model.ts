@@ -1,25 +1,21 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
-export type GroupDocument=Group & Document;
+export type GroupDocument = Group & Document;
 @Schema()
-export class Group  {
+export class Group {
+  @Prop()
+  entraineur: string;
 
-    @Prop()
-    entraineur:String;
+  @Prop()
+  joueurs: string[];
 
-    @Prop()
-    joueurs:String[];
+  @Prop()
+  niveau: string;
 
-    @Prop()
-    niveau:String;
+  @Prop()
+  nom: string;
 
-    @Prop()
-    nom:String;
-
-    @Prop()
-    age:number[];
-
-
-    
+  @Prop()
+  age: number[];
 }
-export const GroupSchema= SchemaFactory.createForClass(Group);
+export const GroupSchema = SchemaFactory.createForClass(Group);
