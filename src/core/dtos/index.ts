@@ -8,3 +8,6 @@ export * from "./sceance.dto";
 export * from "./chat.dto";
 export * from "./message.dto";
 export * from "./group.dto";
+export * from "./assign-marquer.dto";
+export * from   "./competition-result.dto";
+export * from "./inscrire-participant.dto";

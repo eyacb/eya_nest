@@ -1,64 +1,99 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsBoolean, IsDate, IsNotEmpty, IsNumber, IsString, ValidateNested } from 'class-validator';
+import { ApiPropertyOptional } from '@nestjs/swagger';
+class ParticipantDto {
+  @IsNumber()
+  id: number;
 
-interface Joueur {
-    id: number;
-    nom: string;
-  }
+  @IsString()
+  @IsNotEmpty()
+  name: string;
+
+  @IsNumber()
+  handicap: number;
+
+  @IsNumber()
+  score: number;
+
+  @IsBoolean()
+  scoreSigned: boolean;
+}
 
 export class CreateCompetitionDto {
+    @ApiPropertyOptional()
+    @IsDate()
+  date: Date;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    nom: string;
+  @ApiPropertyOptional()
+  @IsString()
+  @IsNotEmpty()
+  organizer: string;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    dateDebut: Date;
+  @ApiPropertyOptional()
+  @IsString()
+  @IsNotEmpty()
+  name: string;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    dateFin: Date;
+  @ApiPropertyOptional()
+  @IsString()
+  @IsNotEmpty()
+  startTime: string;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    score: number[]; 
+  @ApiPropertyOptional()
+  @IsString()
+  @IsNotEmpty()
+  endTime: string;
 
-    @ApiProperty()
-    @IsString()
-    @IsNotEmpty()
-    joueurs: Joueur[];
+  @ApiPropertyOptional()
+  @IsNumber()
+  participationFee: number;
 
+  @ApiPropertyOptional()
+  @IsString()
+  @IsNotEmpty()
+  feeType: string;
+
+  @ApiPropertyOptional()
+  @IsNotEmpty()
+  packaging: string[];
+
+  @ApiPropertyOptional()
+  @IsBoolean()
+  registrationStatus: boolean;
+
+  @IsBoolean()
+  paymentStatus: boolean;
+
+  @ApiPropertyOptional()
+  @IsBoolean()
+  signatureStatus: boolean;
+
+  @ApiPropertyOptional()
+  @IsBoolean()
+  startListStatus: boolean;
+
+  @ApiPropertyOptional()
+  @IsBoolean()
+  resultStatus: boolean;
+
+  @ApiPropertyOptional()
+  @IsBoolean()
+  multiDayStatus: boolean;
+
+  @ApiPropertyOptional()
+  @IsBoolean()
+  multiDayFeeStatus: boolean;
+  
+  @ApiPropertyOptional()
+  @IsString()
+  participants: ParticipantDto[];
 }
 
-export class UpdateCompetitionDto {
-
-    @ApiPropertyOptional()
-    @IsString()
-    nom?: string;
-
-    @ApiPropertyOptional()
-    @IsString()
-    dateDebut?: Date;
-
-    @ApiPropertyOptional()
-    @IsString()
-    dateFin?: Date;
-
-    @ApiPropertyOptional()
-    @IsString()
-    score?: number[]; 
-
-    @ApiPropertyOptional()
-    @IsString()
-    joueurs?: Joueur[];
+export class UpdateCompetitionDto extends CreateCompetitionDto {
+  @IsNumber()
+  id: number;
 }
 
-export class DeleteCompetitionDto{
-    id: string;
-
+export class DeleteCompetitionDto {
+  @IsNumber()
+  id: number;
 }

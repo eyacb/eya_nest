@@ -4,6 +4,7 @@ import { BcryptServicesModule } from "src/services/bcrypt-services/bcrypt-servic
 import { DataServicesModule } from "../../services/data-services/data-services.module";
 import { EvenementUseCases } from './evenement.use-case';
 import { EvenementFactoryService } from './evenement-factory.service';
+import { IDataServices } from 'src/core';
 
 
 @Module({
@@ -11,6 +12,7 @@ import { EvenementFactoryService } from './evenement-factory.service';
   providers:  [
     EvenementFactoryService,
     EvenementUseCases,
+   
 ],
   exports: [
    EvenementFactoryService,

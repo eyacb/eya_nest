@@ -2,12 +2,17 @@ import { Controller, Get, Post, Put, Delete, Body, Param, Injectable, Unauthoriz
 import { Competition, IDataServices } from 'src/core';
 import { CreateCompetitionDto, UpdateCompetitionDto } from 'src/core/dtos/competition.dto'; // Assurez-vous d'importer UpdateCompetitionDto
 import { CompetitionFactoryService } from './competition-factory.service';
+import { AssignMarquerDto } from 'src/core/dtos/assign-marquer.dto';
+import { InscrireParticipantDto } from 'src/core/dtos/inscrire-participant.dto';
+import { CompetitionResultDto } from 'src/core/dtos/competition-result.dto';
 
 @Injectable()
 export class CompetitionUseCases {
   constructor(  
     private dataServices: IDataServices,
     private competitionsFactoryService: CompetitionFactoryService,
+    private participants: string[] = [],
+
   ) {}
 
   async getAllCompetitions(): Promise<Competition[]> {
@@ -23,16 +28,15 @@ export class CompetitionUseCases {
   }
 
   async createCompetition(@Body() createCompetitionDto: CreateCompetitionDto): Promise<Competition> {
-    const { nom } = createCompetitionDto;
-    const competitionExist = await this.dataServices.competitions.findByAttribute('nom', nom);
+    const { name } = createCompetitionDto;
+    const competitionExist = await this.dataServices.competitions.findByAttribute('nom', name);
     if (competitionExist) {
-      throw new UnauthorizedException(`Competition with name ${nom} already exists.`);
+      throw new UnauthorizedException(`Competition with name ${name} already exists.`);
     }
     const newCompetition = this.competitionsFactoryService.createNewCompetition(createCompetitionDto);
     return await this.dataServices.competitions.create(newCompetition);
   }
 
- 
   async updateCompetition(@Param('id') id: string, @Body() updateCompetitionDto: UpdateCompetitionDto): Promise<Competition> {
     const competition = await this.dataServices.competitions.get(id);
     if (!competition) {
@@ -42,7 +46,6 @@ export class CompetitionUseCases {
     return await this.dataServices.competitions.update(id, updatedCompetition);
   }
 
-  
   async deleteCompetition(@Param('id') id: string): Promise<void> {
     const competition = await this.dataServices.competitions.get(id);
     if (!competition) {
@@ -50,4 +53,29 @@ export class CompetitionUseCases {
     }
     await this.dataServices.competitions.delete(id);
   }
+
+
+  inscrireParticipant(inscrireParticipantDto: InscrireParticipantDto): void {
+    const { nomCompetition, nomParticipant } = inscrireParticipantDto;
+    if (!this.participants.includes(nomParticipant)) {
+      this.participants.push(nomParticipant);
+      console.log(`${nomParticipant} inscrit à la compétition ${nomCompetition}`);
+    } else {
+      console.log(`${nomParticipant} est déjà inscrit à la compétition ${nomCompetition}`);
+    }
+  }
+
+  assignMarquer(assignMarquerDto: AssignMarquerDto): void {
+    const { nomParticipant, nomMarqueur } = assignMarquerDto;
+    console.log(`${nomMarqueur} est assigné comme marqueur pour ${nomParticipant}`);
+  }
+
+  competitionResult(competitionResultDto: CompetitionResultDto): void {
+    const { nomCompetition, resultats } = competitionResultDto;
+    console.log(`Résultats de la compétition ${nomCompetition}:`);
+    for (const participant in resultats) {
+      console.log(`${participant}: ${resultats[participant]} points`);
+    }
+  }
 }
+
